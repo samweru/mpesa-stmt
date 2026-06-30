@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo -e "Exactly one argument is required!"
+    echo -e "Usage: $0 <pdf_file>"
+    exit 1
+fi
+
+read -p "This script will delete existing [output.xlsx, input.csv, output.csv] Do you want to continue? (y/n): " response
+
+if [[ "$response" =~ ^[Yy](es)?$ ]]; then
+    rm output.xlsx input.csv output.csv
+
+	./bin/pdf-xls $1 output.xlsx
+	./bin/merge-sheets output.xlsx
+	./bin/to-csv output.xlsx
+	./bin/merge input.csv output.csv
+else
+    echo "Action cancelled."
+fi

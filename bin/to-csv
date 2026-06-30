@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Error: Missing required first argument."
+    echo "Usage: $0 <input_xlsx>"
+    exit 1
+fi
+
+filepath=$1
+filename=$(basename "$filepath")
+
+libreoffice --headless --convert-to csv $1 && mv "${filename%.*}.csv" input.csv

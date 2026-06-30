@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# pip install opencv-python
+# pip install camelot-py
+
+# camelot stream -f xlsx -o output.xlsx $1
+# camelot stream -p all -f excel -o output.xlsx 2025.pdf
+
+# 1. Check if exactly 2 arguments were provided
+if [ "$#" -ne 2 ]; then
+    echo "Error: Wrong number of arguments."
+    echo "Usage: $0 <input_pdf> <output_xlsx>"
+    exit 1
+fi
+
+# 2. Assign the arguments to descriptive variables
+XLS="$1"
+PDF="$2"
+
+camelot stream -p all -f excel -o $PDF $XLS

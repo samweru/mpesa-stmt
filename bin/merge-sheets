@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -x
+
+python3 bin/merge_sheets.py $PWD/$1 --skip 0 1 --drop-first-col
+
+
+
