@@ -1,6 +1,18 @@
 Mpesa Statement Extraction
 ===
 
+This application is used to extract MPESA `pdf` statement to `csv` in an orderly format.
+
+### Disclaimer
+
+Remove PDF password at your own **RISK** but this is required to run this/these script(s).
+Below is a script to remove password from your PDF.
+
+```sh
+# sudo apt install qpdf
+qpdf --password='YOUR_CURRENT_PASSWORD' --decrypt input.pdf output.pdf
+```
+
 ### Requirements
 
 ```sh
