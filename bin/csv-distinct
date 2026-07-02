@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Here is a flexible Bash script that lets you pass the column 
+#  number as an argument to filter distinct rows.
+
+# Check if required arguments are provided
+if [ "$#" -lt 2 ]; then
+    echo "Usage: $0 <column_number> <input_csv> [output_csv]"
+    echo "Example: $0 3 input.csv output.csv"
+    exit 1
+fi
+
+# Assign arguments to variables
+COL_NUM=$1
+INPUT_FILE=$2
+# If no output file is named, default to 'output.csv'
+OUTPUT_FILE=${3:-"output.csv"}
+
+# Verify input file exists
+if [ ! -f "$INPUT_FILE" ]; then
+    echo "Error: Input file '$INPUT_FILE' not found."
+    exit 1
+fi
+
+# Run awk using the dynamic column number variable ($COL_NUM)
+# Preserves the header (NR==1) and filters distinct on the rest (NR>1)
+awk -F, -v col="$COL_NUM" 'NR==1; NR>1 && !visited[$col]++' "$INPUT_FILE" > "$OUTPUT_FILE"
+
+echo "Success! Distinct rows based on column $COL_NUM saved to '$OUTPUT_FILE'."

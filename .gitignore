@@ -2,3 +2,5 @@ input.csv
 output.csv
 output.xlsx
 *.pdf
+mstmt.sublime-project
+mstmt.sublime-workspace
