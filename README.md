@@ -31,6 +31,20 @@ pip install pandas openpyxl
 Your resulting `output.csv` is the final product. 
 You may want to review and clean your `output.csv` but the hassle is much less after this process.
 
+### Tools
+
+You may want to clean your `output.csv`. Rename your csv to something else first to avoid overwritting.
+
+Filter transaction to ensure they are distinct by transaction number.
+```sh
+./bin/csv-distinct <column_number> <input_csv> [output_csv]
+```
+
+Count your lines in your csv file.
+```sh
+./bin/csv-row-count <input_csv>
+```
+
 ### Note
 
 If your want to change/omit `--skip` document sheets and/or omit  `--drop-first-col` you can do that in `bin/merge-sheets` script.
